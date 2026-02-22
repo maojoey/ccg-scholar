@@ -420,8 +420,8 @@ npx tsc --noEmit
 
 ### 致谢
 
-- [ccg-workflow](https://www.npmjs.com/package/ccg-workflow) — 多模型协作基础设施与 codeagent-wrapper
-- [claude-scholar](https://github.com/xlxs10/claude-scholar) — 科研技能、代理与领域知识
+- [ccg-workflow](https://github.com/fengshao1227/ccg-workflow) — 多模型协作基础设施与 codeagent-wrapper
+- [claude-scholar](https://github.com/Galaxy-Dawn/claude-scholar) — 科研技能、代理与领域知识
 - [cexll/myclaude](https://github.com/cexll/myclaude) — codeagent-wrapper 二进制
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) — 命令/技能/代理框架
 
@@ -638,8 +638,8 @@ npx tsc --noEmit     # Type check
 
 ### Credits
 
-- [ccg-workflow](https://www.npmjs.com/package/ccg-workflow) — Multi-model collaboration infrastructure and codeagent-wrapper
-- [claude-scholar](https://github.com/xlxs10/claude-scholar) — Research skills, agents, and domain knowledge
+- [ccg-workflow](https://github.com/fengshao1227/ccg-workflow) — Multi-model collaboration infrastructure and codeagent-wrapper
+- [claude-scholar](https://github.com/Galaxy-Dawn/claude-scholar) — Research skills, agents, and domain knowledge
 - [cexll/myclaude](https://github.com/cexll/myclaude) — codeagent-wrapper binary
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) — Commands / Skills / Agents framework
 
