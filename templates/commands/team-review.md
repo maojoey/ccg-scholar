@@ -40,7 +40,7 @@ Dispatch all three review perspectives in parallel using `run_in_background`:
 # [Claude reviews directly in the main thread after dispatching others]
 
 # Codex: Code and Algorithm Correctness Review
-~/.claude/bin/codeagent-wrapper --backend codex --prompt "Review this paper draft as a technical reviewer focusing on CODE and ALGORITHM correctness:
+~/.claude/bin/codeagent-wrapper --lite --backend codex --prompt "Review this paper draft as a technical reviewer focusing on CODE and ALGORITHM correctness:
 
 1. Algorithm Analysis:
    - Are all algorithms correctly specified? (termination, correctness, complexity)
@@ -68,7 +68,7 @@ For each issue, provide: location, severity, description, suggested fix.
 Paper content: [PAPER_CONTENT]" &
 
 # Gemini: Figures, Presentation, and Formatting Review
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Review this paper draft as a reviewer focusing on PRESENTATION and VISUAL quality:
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Review this paper draft as a reviewer focusing on PRESENTATION and VISUAL quality:
 
 1. Figure Quality:
    - Are all figures necessary and informative?

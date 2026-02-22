@@ -25,7 +25,7 @@ Dispatch Gemini for parallel validation:
 
 ```bash
 # Validate DOIs and metadata
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "For each of the following citations, verify:
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "For each of the following citations, verify:
 1. DOI validity (if provided)
 2. Title accuracy (exact match with published version)
 3. Author list completeness
@@ -59,7 +59,7 @@ Claude analyzes citation usage in the paper draft:
 ## Phase 4: Completeness Check
 
 ```bash
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Given the paper topic and the following reference list, identify important missing citations:
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Given the paper topic and the following reference list, identify important missing citations:
 - Seminal works not cited
 - Recent state-of-the-art not cited
 - Competing approaches not cited

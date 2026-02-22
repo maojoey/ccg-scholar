@@ -29,7 +29,7 @@ Visualization request: $ARGUMENTS
 ## Phase 2: Gemini Figure Generation
 
 ```bash
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Generate Python code using matplotlib and seaborn to create a publication-quality figure:
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Generate Python code using matplotlib and seaborn to create a publication-quality figure:
 
 Type: [FIGURE_TYPE]
 Data: [DATA_DESCRIPTION]

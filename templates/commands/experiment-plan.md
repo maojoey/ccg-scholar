@@ -36,7 +36,7 @@ Claude helps formalize the research hypothesis:
 ### Controls
 - **Baseline Selection**: Justify each baseline choice
   ```bash
-  ~/.claude/bin/codeagent-wrapper --backend gemini --prompt "For the research topic '$ARGUMENTS', identify the top 5 most appropriate baselines to compare against. Include: paper reference, whether code is available, reported results on common benchmarks. Return as structured table."
+  GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "For the research topic '$ARGUMENTS', identify the top 5 most appropriate baselines to compare against. Include: paper reference, whether code is available, reported results on common benchmarks. Return as structured table."
   ```
 - **Ablation Plan**: Which components to ablate
 - **Sanity Checks**: Trivial baselines (random, majority class)
@@ -50,7 +50,7 @@ Claude helps formalize the research hypothesis:
 ## Phase 3: Compute Budget
 
 ```bash
-~/.claude/bin/codeagent-wrapper --backend codex --prompt "Estimate the compute requirements for the following experiment plan:
+~/.claude/bin/codeagent-wrapper --lite --backend codex --prompt "Estimate the compute requirements for the following experiment plan:
 - Model: [MODEL_DESCRIPTION]
 - Dataset sizes: [SIZES]
 - Number of runs: [SEEDS * VARIANTS]

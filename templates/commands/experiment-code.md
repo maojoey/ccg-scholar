@@ -23,7 +23,7 @@ Experiment plan or description: $ARGUMENTS
 Dispatch Codex to generate the experiment code:
 
 ```bash
-~/.claude/bin/codeagent-wrapper --backend codex --prompt "Generate a complete experiment codebase for the following plan:
+~/.claude/bin/codeagent-wrapper --lite --backend codex --prompt "Generate a complete experiment codebase for the following plan:
 
 [EXPERIMENT_PLAN]
 
@@ -85,7 +85,7 @@ Claude reviews the generated code for methodological soundness:
 3. Run a quick sanity check:
 
 ```bash
-~/.claude/bin/codeagent-wrapper --backend codex --prompt "Write a smoke test for the experiment code that:
+~/.claude/bin/codeagent-wrapper --lite --backend codex --prompt "Write a smoke test for the experiment code that:
 1. Creates a tiny synthetic dataset (10 samples)
 2. Runs 2 training steps
 3. Verifies loss decreases

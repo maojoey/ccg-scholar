@@ -88,7 +88,7 @@ Generate a project-level `CLAUDE.md` with research context:
 
 ```bash
 # If W&B is available
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Check if wandb is installed and suggest experiment tracking setup for a research project on: $ARGUMENTS. Output a configs/tracking.yaml template."
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Check if wandb is installed and suggest experiment tracking setup for a research project on: $ARGUMENTS. Output a configs/tracking.yaml template."
 ```
 
 4. Generate `configs/experiment/default.yaml` with standard hyperparameter template
@@ -98,7 +98,7 @@ Generate a project-level `CLAUDE.md` with research context:
 Dispatch Gemini to do a quick literature scan for initial context:
 
 ```bash
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "For the research topic '$ARGUMENTS', identify the top 5 most cited recent papers (2023-2025), list key authors, and suggest 3-5 search keywords for deeper review. Output as YAML."
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "For the research topic '$ARGUMENTS', identify the top 5 most cited recent papers (2023-2025), list key authors, and suggest 3-5 search keywords for deeper review. Output as YAML."
 ```
 
 Save output to `papers/references/initial_seed.yaml`.

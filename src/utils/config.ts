@@ -2,7 +2,7 @@ import { homedir } from 'node:os'
 import { join } from 'pathe'
 import fs from 'fs-extra'
 import { parse, stringify } from 'smol-toml'
-import type { CcgScholarConfig, ModelRouting } from '../types/index.js'
+import type { CcgScholarConfig, ModelRouting, ModelSettings } from '../types/index.js'
 
 /**
  * CCG-Scholar configuration directory
@@ -37,12 +37,23 @@ export function createDefaultRouting(): ModelRouting {
 }
 
 /**
+ * Create default model settings
+ */
+export function createDefaultModels(): ModelSettings {
+  return {
+    geminiModel: 'gemini-2.5-flash',
+    codexModel: '',
+  }
+}
+
+/**
  * Create default CCG-Scholar configuration
  */
 export function createDefaultConfig(): CcgScholarConfig {
   return {
     version: '1.0.0',
     routing: createDefaultRouting(),
+    models: createDefaultModels(),
     installedWorkflows: [],
     mcpServers: [],
     language: 'zh-CN',
@@ -64,6 +75,10 @@ export async function readCcgScholarConfig(): Promise<CcgScholarConfig> {
         routing: {
           ...createDefaultRouting(),
           ...(parsed.routing || {}),
+        },
+        models: {
+          ...createDefaultModels(),
+          ...(parsed.models || {}),
         },
       }
     }

@@ -57,9 +57,15 @@ export interface ClaudeCodeConfig {
   [key: string]: unknown
 }
 
+export interface ModelSettings {
+  geminiModel: string
+  codexModel: string
+}
+
 export interface CcgScholarConfig {
   version: string
   routing: ModelRouting
+  models: ModelSettings
   installedWorkflows: string[]
   mcpServers: string[]
   language: 'zh-CN' | 'en'

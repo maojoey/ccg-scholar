@@ -45,7 +45,7 @@ Claude verifies every reviewer point is addressed:
 ### Persuasiveness Review
 
 ```bash
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Evaluate the persuasiveness of this rebuttal response. For each reviewer response:
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Evaluate the persuasiveness of this rebuttal response. For each reviewer response:
 1. Would the reviewer be satisfied?
 2. Is the evidence sufficient?
 3. Are there logical gaps?

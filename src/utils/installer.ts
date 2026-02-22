@@ -2,8 +2,8 @@ import { homedir } from 'node:os'
 import { join, dirname } from 'pathe'
 import { fileURLToPath } from 'node:url'
 import fs from 'fs-extra'
-import type { WorkflowConfig, InstallResult, UninstallResult, ModelRouting } from '../types/index.js'
-import { CCG_SCHOLAR_DIR, readCcgScholarConfig, writeCcgScholarConfig, createDefaultConfig } from './config.js'
+import type { WorkflowConfig, InstallResult, UninstallResult, ModelRouting, ModelSettings } from '../types/index.js'
+import { CCG_SCHOLAR_DIR, readCcgScholarConfig, writeCcgScholarConfig, createDefaultConfig, createDefaultModels } from './config.js'
 
 // ---------------------------------------------------------------------------
 // Package root
@@ -242,7 +242,9 @@ const HOOK_FILES = [
 export function injectConfigVariables(
   content: string,
   routing: ModelRouting,
+  models?: ModelSettings,
 ): string {
+  const resolvedModels = models || createDefaultModels()
   const replacements: Record<string, string> = {
     '{{LITERATURE_MODELS}}': routing.literatureSearch.models.join(', '),
     '{{LITERATURE_PRIMARY}}': routing.literatureSearch.primary,
@@ -258,6 +260,8 @@ export function injectConfigVariables(
     '{{CROSS_REVIEW_STRATEGY}}': routing.crossReview.strategy,
     '{{COLLABORATION_MODE}}': routing.mode,
     '{{ZOTERO_MCP_TOOL}}': 'use_mcp_tool server_name="zotero"',
+    '{{GEMINI_MODEL}}': resolvedModels.geminiModel,
+    '{{CODEX_MODEL}}': resolvedModels.codexModel,
   }
 
   let result = content
@@ -277,6 +281,7 @@ export function injectConfigVariables(
 export async function installWorkflows(
   selectedWorkflowIds: string[],
   routing: ModelRouting,
+  models?: ModelSettings,
 ): Promise<InstallResult> {
   const packageRoot = getPackageRoot()
   const result: InstallResult = {
@@ -313,7 +318,7 @@ export async function installWorkflows(
       const src = join(packageRoot, 'templates', 'commands', `${cmd}.md`)
       if (await fs.pathExists(src)) {
         let content = await fs.readFile(src, 'utf-8')
-        content = injectConfigVariables(content, routing)
+        content = injectConfigVariables(content, routing, models)
         const dest = join(COMMANDS_DIR, `${cmd}.md`)
         await fs.writeFile(dest, content, 'utf-8')
         result.installedCommands.push(cmd)
@@ -334,7 +339,7 @@ export async function installWorkflows(
       const src = join(packageRoot, 'templates', 'commands', 'agents', `${agent}.md`)
       if (await fs.pathExists(src)) {
         let content = await fs.readFile(src, 'utf-8')
-        content = injectConfigVariables(content, routing)
+        content = injectConfigVariables(content, routing, models)
         const dest = join(AGENTS_DIR, `${agent}.md`)
         await fs.writeFile(dest, content, 'utf-8')
       }

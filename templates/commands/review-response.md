@@ -36,7 +36,7 @@ Claude determines the response strategy for each point:
 ## Phase 3: Draft Formal Response
 
 ```bash
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Help format the following rebuttal points into a polished, professional response letter. Ensure:
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Help format the following rebuttal points into a polished, professional response letter. Ensure:
 1. Consistent formatting across all responses
 2. Reviewer quotes are properly formatted (italicized or quoted)
 3. New text/changes are clearly marked

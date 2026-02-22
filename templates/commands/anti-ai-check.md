@@ -39,7 +39,7 @@ Claude scans the text for common AI-generated writing patterns:
 ## Phase 2: AI Detection Score Estimation
 
 ```bash
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Analyze the following academic text and estimate its likelihood of being flagged by AI detection tools (GPTZero, Originality.ai, Turnitin AI). Score each paragraph from 0 (clearly human) to 100 (clearly AI). Identify the top 10 most AI-flaggable sentences.
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Analyze the following academic text and estimate its likelihood of being flagged by AI detection tools (GPTZero, Originality.ai, Turnitin AI). Score each paragraph from 0 (clearly human) to 100 (clearly AI). Identify the top 10 most AI-flaggable sentences.
 
 Text: [CONTENT]
 

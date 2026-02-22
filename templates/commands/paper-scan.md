@@ -24,7 +24,7 @@ Determine the input type:
 Dispatch Gemini to extract structured information:
 
 ```bash
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Read the following paper and extract a structured summary:
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Read the following paper and extract a structured summary:
 
 Paper: $ARGUMENTS
 
@@ -69,7 +69,7 @@ If multiple papers are provided (comma-separated or file list):
 ```bash
 # Parallel scan of multiple papers
 for paper in $PAPER_LIST; do
-  ~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Scan paper: $paper ..." &
+  GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Scan paper: $paper ..." &
 done
 ```
 

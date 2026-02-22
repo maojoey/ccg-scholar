@@ -45,7 +45,7 @@ Claude reads the paper and distills content for poster format:
 ### Phase 2: Gemini Designs Poster Layout (poster-designer role)
 
 ```bash
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Design an academic poster layout with these specifications:
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Design an academic poster layout with these specifications:
 - Format: [A0/36x48 inches], [portrait/landscape]
 - Sections: [CONTENT_BLOCKS]
 - Number of figures: [N]

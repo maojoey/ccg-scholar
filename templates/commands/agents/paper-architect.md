@@ -86,10 +86,10 @@ How this agent coordinates Claude, Codex, and Gemini:
 
 ```bash
 # Codex: Convert experiment code to method description framework
-~/.claude/bin/codeagent-wrapper --backend codex --prompt "Analyze the experiment code in scripts/ and src/. Generate: method description framework, algorithm pseudocode, and notation table for the paper."
+~/.claude/bin/codeagent-wrapper --lite --backend codex --prompt "Analyze the experiment code in scripts/ and src/. Generate: method description framework, algorithm pseudocode, and notation table for the paper."
 
 # Gemini: Figure and table planning
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Analyze the available experiment results and suggest figure/table plan: types, data sources, placement, sizes. Follow academic publication standards."
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Analyze the available experiment results and suggest figure/table plan: types, data sources, placement, sizes. Follow academic publication standards."
 ```
 
 - Gemini 以 figure-planner role 规划图表：

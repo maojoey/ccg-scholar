@@ -74,10 +74,10 @@ How this agent coordinates Claude, Codex, and Gemini:
 
 ```bash
 # Codex feasibility validation
-~/.claude/bin/codeagent-wrapper --backend codex --prompt "Validate feasibility of this experiment plan: [WBS_PLAN]. Check: library compatibility, GPU memory estimates, implementation complexity, data pipeline viability. Return feasibility report."
+~/.claude/bin/codeagent-wrapper --lite --backend codex --prompt "Validate feasibility of this experiment plan: [WBS_PLAN]. Check: library compatibility, GPU memory estimates, implementation complexity, data pipeline viability. Return feasibility report."
 
 # Gemini implementation reference check
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Find reference implementations for baselines [BASELINE_LIST] and datasets [DATASET_LIST]. For each: GitHub URL, stars, last updated, reproduction success rate."
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Find reference implementations for baselines [BASELINE_LIST] and datasets [DATASET_LIST]. For each: GitHub URL, stars, last updated, reproduction success rate."
 ```
 
 - Codex 以 experiment-coder role 评估技术可行性：

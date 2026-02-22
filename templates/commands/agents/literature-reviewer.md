@@ -48,8 +48,8 @@ How this agent coordinates Claude, Codex, and Gemini:
 
 ```bash
 # Parallel paper scanning via codeagent-wrapper
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Scan the following papers and extract: title, authors, venue, year, abstract summary, core method, key contribution. Return as JSON. Papers: [PAPER_LIST]" &
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Find survey papers and foundational works for: [TOPIC]. Return structured JSON with citation counts." &
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Scan the following papers and extract: title, authors, venue, year, abstract summary, core method, key contribution. Return as JSON. Papers: [PAPER_LIST]" &
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Find survey papers and foundational works for: [TOPIC]. Return structured JSON with citation counts." &
 ```
 - 对每篇论文提取：
   - 标题、作者、年份、会议/期刊

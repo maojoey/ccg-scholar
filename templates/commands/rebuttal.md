@@ -50,7 +50,7 @@ Claude categorizes each reviewer concern:
 For each Critical/Major technical concern:
 
 ```bash
-~/.claude/bin/codeagent-wrapper --backend codex --prompt "Address the following reviewer concern with technical analysis:
+~/.claude/bin/codeagent-wrapper --lite --backend codex --prompt "Address the following reviewer concern with technical analysis:
 
 Concern: [REVIEWER_COMMENT]
 Our method: [METHOD_DESCRIPTION]
@@ -71,7 +71,7 @@ For concerns requiring new evidence:
 
 ```bash
 # Additional experiments
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Design and generate code for additional experiments to address these reviewer concerns:
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Design and generate code for additional experiments to address these reviewer concerns:
 
 [CONCERNS_REQUIRING_EXPERIMENTS]
 
@@ -82,7 +82,7 @@ For each concern:
 4. Estimate compute time" &
 
 # Additional visualizations
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Create visualizations to address these reviewer concerns:
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Create visualizations to address these reviewer concerns:
 
 [CONCERNS_REQUIRING_FIGURES]
 

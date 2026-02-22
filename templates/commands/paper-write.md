@@ -65,7 +65,7 @@ For each section, Claude writes the content with integrated citation verificatio
 2. Insert citations using `\cite{key}` format
 3. For each citation used, verify with:
    ```bash
-   ~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Verify that paper [TITLE] by [AUTHORS] actually supports the claim: '[CLAIM]'. Return: CONFIRMED, PARTIAL, or UNSUPPORTED with explanation."
+   GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Verify that paper [TITLE] by [AUTHORS] actually supports the claim: '[CLAIM]'. Return: CONFIRMED, PARTIAL, or UNSUPPORTED with explanation."
    ```
 4. Mark sections needing figures/tables with `[FIGURE:description]` placeholders
 5. Save each section to `papers/drafts/sections/`
@@ -76,7 +76,7 @@ Launch parallel reviews using `run_in_background`:
 
 ```bash
 # Codex: Technical correctness review
-~/.claude/bin/codeagent-wrapper --backend codex --prompt "Review the following paper draft for technical correctness:
+~/.claude/bin/codeagent-wrapper --lite --backend codex --prompt "Review the following paper draft for technical correctness:
 - Mathematical notation consistency
 - Algorithm description accuracy
 - Experiment methodology soundness
@@ -86,7 +86,7 @@ Flag issues with severity: Critical/Major/Minor.
 Draft: [PAPER_CONTENT]" &
 
 # Gemini: Presentation quality review
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Review the following paper draft for presentation quality:
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Review the following paper draft for presentation quality:
 - Clarity of writing and logical flow
 - Figure and table effectiveness
 - Abstract and introduction hook strength

@@ -63,7 +63,7 @@ Text to polish: $ARGUMENTS
 ## Phase 3: Section-Specific Polish
 
 ```bash
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Review the following academic text for:
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Review the following academic text for:
 1. Sentences that sound AI-generated or unnatural
 2. Overuse of specific phrases
 3. Passive voice overuse (flag if >40% of sentences)

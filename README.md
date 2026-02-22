@@ -138,8 +138,9 @@ rm -rf package ccg-workflow-*.tgz
 {
   "permissions": {
     "allow": [
-      "Bash(~/.claude/bin/codeagent-wrapper --backend codex*)",
-      "Bash(~/.claude/bin/codeagent-wrapper --backend gemini*)"
+      "Bash(~/.claude/bin/codeagent-wrapper --lite --backend codex*)",
+      "Bash(~/.claude/bin/codeagent-wrapper --lite --backend gemini*)",
+      "Bash(GEMINI_MODEL=* ~/.claude/bin/codeagent-wrapper --lite --backend gemini*)"
     ]
   }
 }
@@ -174,6 +175,25 @@ ccg-scholar mcp
 | **并行模式** | 多个模型同时执行，适合交叉评审 |
 | **顺序模式** | 按流程依次执行，适合线性工作流 |
 
+#### 模型设置
+
+`ccg-scholar init` 过程中可配置 Gemini 和 Codex 的具体模型名称：
+
+| 配置项 | 默认值 | 说明 |
+|--------|--------|------|
+| Gemini Model | `gemini-2.5-flash` | Gemini 后端使用的模型名称 |
+| Codex Model | *(空，使用 Codex CLI 默认)* | Codex 后端使用的模型名称 |
+
+配置存储在 `~/.claude/.ccg-scholar/config.toml` 的 `[models]` 段中：
+
+```toml
+[models]
+geminiModel = "gemini-2.5-flash"
+codexModel = ""
+```
+
+> **注意**: 所有 codeagent-wrapper 调用均使用 `--lite` 模式运行，不会弹出浏览器 Web UI。
+
 默认路由配置：
 
 | 任务 | 主模型 | 说明 |
@@ -196,9 +216,10 @@ ccg-scholar init
 交互式引导你完成：
 1. 选择语言（中文 / English）
 2. 选择协作模式（智能 / 并行 / 顺序）
-3. 勾选要安装的工作流
-4. 配置 MCP 服务器
-5. 确认并安装
+3. 配置模型（Gemini / Codex 模型名称）
+4. 勾选要安装的工作流
+5. 配置 MCP 服务器
+6. 确认并安装
 
 安装完成后，所有命令、技能、代理会被安装到 `~/.claude/` 目录下。
 
@@ -535,8 +556,9 @@ Add codeagent-wrapper to Claude Code's permission whitelist in `~/.claude/settin
 {
   "permissions": {
     "allow": [
-      "Bash(~/.claude/bin/codeagent-wrapper --backend codex*)",
-      "Bash(~/.claude/bin/codeagent-wrapper --backend gemini*)"
+      "Bash(~/.claude/bin/codeagent-wrapper --lite --backend codex*)",
+      "Bash(~/.claude/bin/codeagent-wrapper --lite --backend gemini*)",
+      "Bash(GEMINI_MODEL=* ~/.claude/bin/codeagent-wrapper --lite --backend gemini*)"
     ]
   }
 }
@@ -560,6 +582,25 @@ Configure later with:
 ```bash
 ccg-scholar mcp
 ```
+
+#### Model Settings
+
+During `ccg-scholar init`, you can configure the specific model names for Gemini and Codex backends:
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| Gemini Model | `gemini-2.5-flash` | Model name for the Gemini backend |
+| Codex Model | *(empty, uses Codex CLI default)* | Model name for the Codex backend |
+
+Stored in `~/.claude/.ccg-scholar/config.toml` under `[models]`:
+
+```toml
+[models]
+geminiModel = "gemini-2.5-flash"
+codexModel = ""
+```
+
+> **Note**: All codeagent-wrapper calls run in `--lite` mode, which prevents the browser Web UI from opening.
 
 ### Usage
 

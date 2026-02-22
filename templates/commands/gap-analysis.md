@@ -24,13 +24,13 @@ Dispatch Gemini to scan for understudied areas across multiple dimensions:
 
 ```bash
 # Dimension 1: Methodological gaps
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Given the research area '$ARGUMENTS', identify methodological gaps: techniques from adjacent fields not yet applied, combinations of existing methods not explored, scalability issues unaddressed. Return structured analysis with evidence." &
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Given the research area '$ARGUMENTS', identify methodological gaps: techniques from adjacent fields not yet applied, combinations of existing methods not explored, scalability issues unaddressed. Return structured analysis with evidence." &
 
 # Dimension 2: Application domain gaps
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "For '$ARGUMENTS', identify application domains where this research has not been explored but could have high impact. Consider underrepresented languages, modalities, industries. Return with justification." &
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "For '$ARGUMENTS', identify application domains where this research has not been explored but could have high impact. Consider underrepresented languages, modalities, industries. Return with justification." &
 
 # Dimension 3: Evaluation gaps
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "For '$ARGUMENTS', identify evaluation gaps: missing benchmarks, inadequate metrics, lack of human evaluation, insufficient ablation studies in existing work. Return structured analysis." &
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "For '$ARGUMENTS', identify evaluation gaps: missing benchmarks, inadequate metrics, lack of human evaluation, insufficient ablation studies in existing work. Return structured analysis." &
 ```
 
 ## Phase 3: Claude Feasibility and Novelty Analysis

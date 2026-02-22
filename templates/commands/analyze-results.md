@@ -56,7 +56,7 @@ Dispatch Gemini to generate publication-quality figures:
 
 ```bash
 # Main results visualization
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Generate Python matplotlib/seaborn code to create publication-quality figures for the following experiment results:
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Generate Python matplotlib/seaborn code to create publication-quality figures for the following experiment results:
 
 [RESULTS_DATA]
 

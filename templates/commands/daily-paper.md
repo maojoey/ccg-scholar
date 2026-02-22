@@ -23,7 +23,7 @@ Dispatch Gemini to scan recent arXiv submissions:
 
 ```bash
 # Scan primary categories
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Search arXiv for papers submitted in the last 24-48 hours in categories cs.CL, cs.LG, cs.AI, cs.CV (adjust based on research area) matching keywords: '$ARGUMENTS'.
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Search arXiv for papers submitted in the last 24-48 hours in categories cs.CL, cs.LG, cs.AI, cs.CV (adjust based on research area) matching keywords: '$ARGUMENTS'.
 
 For each relevant paper found, extract:
 - arXiv ID
@@ -36,7 +36,7 @@ For each relevant paper found, extract:
 Return as JSON array sorted by relevance." &
 
 # Scan cross-listed papers
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Search for cross-listed arXiv papers in the last 48 hours that combine multiple relevant areas for '$ARGUMENTS'. These interdisciplinary papers are often high-impact. Return as JSON array." &
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Search for cross-listed arXiv papers in the last 48 hours that combine multiple relevant areas for '$ARGUMENTS'. These interdisciplinary papers are often high-impact. Return as JSON array." &
 ```
 
 ## Phase 3: Claude Relevance Filtering and Summary

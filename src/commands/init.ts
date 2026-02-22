@@ -2,10 +2,10 @@ import process from 'node:process'
 import ansis from 'ansis'
 import ora from 'ora'
 import { initI18n, t } from '../i18n/index.js'
-import { readCcgScholarConfig, createDefaultRouting } from '../utils/config.js'
+import { readCcgScholarConfig, createDefaultRouting, createDefaultModels } from '../utils/config.js'
 import { WORKFLOW_CONFIGS, installWorkflows } from '../utils/installer.js'
 import { AUXILIARY_MCPS, configMcp } from '../utils/mcp.js'
-import type { ModelRouting } from '../types/index.js'
+import type { ModelRouting, ModelSettings } from '../types/index.js'
 
 /**
  * Run the interactive init flow
@@ -57,7 +57,28 @@ export async function runInit(): Promise<void> {
     mode,
   }
 
-  // 3. Select workflows
+  // 3. Model settings
+  const defaults = createDefaultModels()
+  const { geminiModel } = await inquirer.prompt([{
+    type: 'input',
+    name: 'geminiModel',
+    message: t('models.gemini') + ':',
+    default: defaults.geminiModel,
+  }])
+
+  const { codexModel } = await inquirer.prompt([{
+    type: 'input',
+    name: 'codexModel',
+    message: t('models.codex') + ':',
+    default: defaults.codexModel,
+  }])
+
+  const models: ModelSettings = {
+    geminiModel: geminiModel || defaults.geminiModel,
+    codexModel: codexModel || '',
+  }
+
+  // 4. Select workflows
   const { selectedWorkflows } = await inquirer.prompt([{
     type: 'checkbox',
     name: 'selectedWorkflows',
@@ -74,7 +95,7 @@ export async function runInit(): Promise<void> {
     process.exit(0)
   }
 
-  // 4. MCP server configuration
+  // 5. MCP server configuration
   const { configureMcp } = await inquirer.prompt([{
     type: 'confirm',
     name: 'configureMcp',
@@ -110,7 +131,7 @@ export async function runInit(): Promise<void> {
     }
   }
 
-  // 5. Confirm
+  // 6. Confirm
   const { confirm } = await inquirer.prompt([{
     type: 'confirm',
     name: 'confirm',
@@ -123,12 +144,12 @@ export async function runInit(): Promise<void> {
     process.exit(0)
   }
 
-  // 6. Install
+  // 7. Install
   const spinner = ora(t('init.installing')).start()
 
   try {
     // Install workflows
-    const result = await installWorkflows(selectedWorkflows, routing)
+    const result = await installWorkflows(selectedWorkflows, routing, models)
 
     // Configure MCP if selected
     if (configureMcp && (mcpOptions.codeRetrieval || mcpOptions.zotero || (mcpOptions.auxiliary && mcpOptions.auxiliary.length > 0))) {
@@ -140,9 +161,10 @@ export async function runInit(): Promise<void> {
       })
     }
 
-    // Update config with language
+    // Update config with language and models
     const updatedConfig = await readCcgScholarConfig()
     updatedConfig.language = language
+    updatedConfig.models = models
     const { writeCcgScholarConfig } = await import('../utils/config.js')
     await writeCcgScholarConfig(updatedConfig)
 

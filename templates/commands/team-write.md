@@ -56,7 +56,7 @@ Claude writes its assigned sections sequentially, while dispatching parallel tas
 
 ```bash
 # Codex: Generate algorithm pseudocode and code listings
-~/.claude/bin/codeagent-wrapper --backend codex --prompt "Generate LaTeX algorithm environments for the following methods:
+~/.claude/bin/codeagent-wrapper --lite --backend codex --prompt "Generate LaTeX algorithm environments for the following methods:
 1. [ALGORITHM_1_DESCRIPTION]
 2. [ALGORITHM_2_DESCRIPTION]
 
@@ -68,7 +68,7 @@ Requirements:
 Return complete LaTeX code blocks." &
 
 # Gemini: Design figures and visual elements
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Design the following figures for the paper:
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Design the following figures for the paper:
 1. Architecture diagram: [DESCRIPTION]
 2. Results comparison chart: [DATA]
 3. Ablation study visualization: [DATA]

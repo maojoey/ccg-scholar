@@ -49,7 +49,7 @@ Claude reads the paper and extracts presentation-ready content:
 ### Phase 2: Gemini Designs Slide Layout (presentation-designer role)
 
 ```bash
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Design a slide deck layout for a conference presentation based on this story arc and content. For each slide provide:
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Design a slide deck layout for a conference presentation based on this story arc and content. For each slide provide:
 - Slide number and title
 - Layout type (title, content, figure, comparison, code, summary)
 - Visual elements (diagrams, charts, animations)

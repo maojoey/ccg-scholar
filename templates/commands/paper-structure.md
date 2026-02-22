@@ -55,7 +55,7 @@ Related Work → Method (defines positioning)
 ## Phase 3: Figure and Table Planning
 
 ```bash
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "For a paper on '$ARGUMENTS', suggest an optimal set of figures and tables:
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "For a paper on '$ARGUMENTS', suggest an optimal set of figures and tables:
 - Which figures are essential (method overview, main results, ablation)?
 - What table format best presents comparison results?
 - Where should figures be placed for maximum impact?

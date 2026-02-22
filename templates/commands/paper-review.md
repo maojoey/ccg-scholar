@@ -27,7 +27,7 @@ Paper draft: $ARGUMENTS
 - [ ] Are there at least 2-3 distinct technical contributions?
 
 ```bash
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Compare the method described in this paper against the top 5 most similar published methods. Identify what is genuinely novel vs incremental improvement. Paper content: [ABSTRACT+METHOD]"
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Compare the method described in this paper against the top 5 most similar published methods. Identify what is genuinely novel vs incremental improvement. Paper content: [ABSTRACT+METHOD]"
 ```
 
 ### 2. Clarity Assessment

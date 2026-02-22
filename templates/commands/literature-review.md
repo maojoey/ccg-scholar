@@ -17,13 +17,13 @@ Dispatch multiple Gemini instances in parallel to scan literature sources. Use `
 
 ```bash
 # Scan 1: Recent papers (2023-2025)
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Search for recent papers (2023-2025) on '$ARGUMENTS'. For each paper found, extract: title, authors, venue, year, abstract summary (2 sentences), methodology type, key contribution. Return as structured JSON array. Focus on top-tier venues (NeurIPS, ICML, ICLR, ACL, KDD, AAAI)." &
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Search for recent papers (2023-2025) on '$ARGUMENTS'. For each paper found, extract: title, authors, venue, year, abstract summary (2 sentences), methodology type, key contribution. Return as structured JSON array. Focus on top-tier venues (NeurIPS, ICML, ICLR, ACL, KDD, AAAI)." &
 
 # Scan 2: Survey papers and seminal works
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Find survey papers and seminal/foundational works related to '$ARGUMENTS'. Include citation count estimates and influence on the field. Return as structured JSON." &
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Find survey papers and seminal/foundational works related to '$ARGUMENTS'. Include citation count estimates and influence on the field. Return as structured JSON." &
 
 # Scan 3: Preprints and emerging trends
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Search arXiv preprints from the last 6 months on '$ARGUMENTS'. Identify emerging trends, new methodologies, and paradigm shifts. Return as structured JSON." &
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Search arXiv preprints from the last 6 months on '$ARGUMENTS'. Identify emerging trends, new methodologies, and paradigm shifts. Return as structured JSON." &
 ```
 
 Wait for all background scans to complete. Merge results and deduplicate by title/DOI.

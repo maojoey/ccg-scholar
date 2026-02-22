@@ -25,7 +25,7 @@ Dispatch multiple models in parallel using `run_in_background`:
 
 ```bash
 # Gemini Scan 1: Academic databases (Google Scholar, Semantic Scholar)
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Search academic databases for papers on '$ARGUMENTS'. Focus on:
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Search academic databases for papers on '$ARGUMENTS'. Focus on:
 - Top-tier venue papers (2022-2025)
 - Survey papers and meta-analyses
 - Highly cited foundational works
@@ -33,14 +33,14 @@ For each paper: title, authors, venue, year, citation count, abstract summary, m
 Return as structured JSON array." &
 
 # Gemini Scan 2: Preprints and emerging work
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Search arXiv and other preprint servers for recent work (last 12 months) on '$ARGUMENTS'. Identify:
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Search arXiv and other preprint servers for recent work (last 12 months) on '$ARGUMENTS'. Identify:
 - Emerging methodologies and paradigm shifts
 - New benchmarks and datasets
 - Cross-disciplinary connections
 Return as structured JSON array." &
 
 # Codex Scan 1: Code repositories and implementations
-~/.claude/bin/codeagent-wrapper --backend codex --prompt "Search GitHub and PapersWithCode for implementations related to '$ARGUMENTS'. For each repository:
+~/.claude/bin/codeagent-wrapper --lite --backend codex --prompt "Search GitHub and PapersWithCode for implementations related to '$ARGUMENTS'. For each repository:
 - Repository URL and star count
 - Associated paper (if any)
 - Framework (PyTorch, TensorFlow, JAX)
@@ -49,7 +49,7 @@ Return as structured JSON array." &
 Return as structured JSON array." &
 
 # Codex Scan 2: Technical benchmarks and leaderboards
-~/.claude/bin/codeagent-wrapper --backend codex --prompt "Find benchmark results and leaderboards related to '$ARGUMENTS'. For each benchmark:
+~/.claude/bin/codeagent-wrapper --lite --backend codex --prompt "Find benchmark results and leaderboards related to '$ARGUMENTS'. For each benchmark:
 - Dataset name and task
 - Current SOTA method and score
 - Top 5 methods with scores

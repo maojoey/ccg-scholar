@@ -72,10 +72,10 @@ How this agent coordinates Claude, Codex, and Gemini:
 
 ```bash
 # Codex: Run additional experiments for reviewer concerns
-~/.claude/bin/codeagent-wrapper --backend codex --prompt "Address reviewer concerns with additional experiments: [EXPERIMENT_REQUESTS]. Reuse existing code framework. Report results with statistics." &
+~/.claude/bin/codeagent-wrapper --lite --backend codex --prompt "Address reviewer concerns with additional experiments: [EXPERIMENT_REQUESTS]. Reuse existing code framework. Report results with statistics." &
 
 # Gemini: Create additional visualizations
-~/.claude/bin/codeagent-wrapper --backend gemini --prompt "Create supplementary figures addressing reviewer concerns: [VISUALIZATION_REQUESTS]. Match style with existing paper figures." &
+GEMINI_MODEL={{GEMINI_MODEL}} ~/.claude/bin/codeagent-wrapper --lite --backend gemini --prompt "Create supplementary figures addressing reviewer concerns: [VISUALIZATION_REQUESTS]. Match style with existing paper figures." &
 ```
 
 - Codex 以 experiment-coder role 执行补充实验：

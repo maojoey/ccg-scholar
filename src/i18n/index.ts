@@ -11,6 +11,12 @@ const zhCN = {
     'init.installSuccess': '安装完成！',
     'init.installFailed': '安装失败，请检查错误信息',
 
+    // Models
+    'models.title': '模型设置',
+    'models.gemini': 'Gemini 模型名称（留空使用默认）',
+    'models.codex': 'Codex 模型名称（留空使用默认）',
+    'models.geminiDefault': 'gemini-2.5-flash',
+
     // Menu labels
     'menu.research': '科研工作流',
     'menu.paper': '论文写作',
@@ -95,6 +101,12 @@ const en = {
     'init.installing': 'Installing research workflows...',
     'init.installSuccess': 'Installation complete!',
     'init.installFailed': 'Installation failed, please check error messages',
+
+    // Models
+    'models.title': 'Model Settings',
+    'models.gemini': 'Gemini model name (leave empty for default)',
+    'models.codex': 'Codex model name (leave empty for default)',
+    'models.geminiDefault': 'gemini-2.5-flash',
 
     // Menu labels
     'menu.research': 'Research Workflows',
