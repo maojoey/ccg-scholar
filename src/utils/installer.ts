@@ -77,6 +77,8 @@ export const ALL_COMMANDS: string[] = [
   'checkpoint',
   // Team
   'team-research',
+  'team-plan',
+  'team-exec',
   'team-write',
   'team-review',
 ]
@@ -157,11 +159,11 @@ export const WORKFLOW_CONFIGS: WorkflowConfig[] = [
     name: '团队协作',
     nameEn: 'Team Collaboration',
     category: 'team',
-    commands: ['team-research', 'team-write', 'team-review'],
+    commands: ['team-research', 'team-plan', 'team-exec', 'team-write', 'team-review'],
     defaultSelected: false,
     order: 7,
-    description: '多人协作文献调研、论文写作和交叉评审',
-    descriptionEn: 'Collaborative literature review, paper writing and cross-review',
+    description: '多模型协作研究、计划、执行、写作和交叉评审全流水线',
+    descriptionEn: 'Multi-model collaborative research, planning, execution, writing and cross-review pipeline',
   },
 ]
 
@@ -181,8 +183,8 @@ const AGENT_TEMPLATES = [
 // ---------------------------------------------------------------------------
 
 const PROMPT_TEMPLATES = {
-  codex: ['experiment-coder', 'code-reviewer', 'debugger'],
-  gemini: ['literature-scanner', 'data-visualizer', 'presentation-designer'],
+  codex: ['experiment-coder', 'code-reviewer', 'debugger', 'planner'],
+  gemini: ['literature-scanner', 'data-visualizer', 'presentation-designer', 'planner'],
   claude: ['research-analyst', 'paper-writer', 'review-synthesizer'],
 }
 
